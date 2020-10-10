@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47AE4E062532084C00BCDF56 /* YOLOv3TinyFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 47AE4E052532084C00BCDF56 /* YOLOv3TinyFP16.mlmodel */; };
 		47EB9E6725306251008770F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB9E6625306251008770F1 /* AppDelegate.swift */; };
 		47EB9E6925306251008770F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB9E6825306251008770F1 /* ViewController.swift */; };
 		47EB9E6B25306253008770F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47EB9E6A25306253008770F1 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		47AE4E052532084C00BCDF56 /* YOLOv3TinyFP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3TinyFP16.mlmodel; sourceTree = "<group>"; };
 		47EB9E6325306251008770F1 /* MusicSuggestor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicSuggestor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47EB9E6625306251008770F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47EB9E6825306251008770F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			children = (
 				47EB9E6625306251008770F1 /* AppDelegate.swift */,
 				47EB9E6825306251008770F1 /* ViewController.swift */,
+				47AE4E052532084C00BCDF56 /* YOLOv3TinyFP16.mlmodel */,
 				47EB9E6A25306253008770F1 /* Assets.xcassets */,
 				47EB9E6C25306253008770F1 /* Main.storyboard */,
 				47EB9E6F25306253008770F1 /* Info.plist */,
@@ -133,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47EB9E6925306251008770F1 /* ViewController.swift in Sources */,
+				47AE4E062532084C00BCDF56 /* YOLOv3TinyFP16.mlmodel in Sources */,
 				47EB9E6725306251008770F1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +279,7 @@
 				CODE_SIGN_ENTITLEMENTS = MusicSuggestor/MusicSuggestor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				COREML_CODEGEN_LANGUAGE = Automatic;
 				DEVELOPMENT_TEAM = 3264XP7DX5;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = MusicSuggestor/Info.plist;
@@ -297,6 +302,7 @@
 				CODE_SIGN_ENTITLEMENTS = MusicSuggestor/MusicSuggestor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				COREML_CODEGEN_LANGUAGE = Automatic;
 				DEVELOPMENT_TEAM = 3264XP7DX5;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = MusicSuggestor/Info.plist;

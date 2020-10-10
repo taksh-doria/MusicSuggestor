@@ -8,9 +8,10 @@
 import Cocoa
 import AVFoundation
 import AVKit
+import Vision
 
 
-class ViewController: NSViewController {
+class ViewController: NSViewController ,AVCaptureVideoDataOutputSampleBufferDelegate{
     
     
     @IBOutlet weak var player: AVPlayerView!
@@ -58,7 +59,8 @@ class ViewController: NSViewController {
                 catch{
                     print("error")
                 }
-                let cameracaptureop=AVCapturePhotoOutput()
+                let cameracaptureop=AVCaptureVideoDataOutput()
+                cameracaptureop.setSampleBufferDelegate(self, queue: DispatchQueue(label: "outputstream"))
                 session.addInput(camerainput!)
                 session.addOutput(cameracaptureop)
                 let layer=AVCaptureVideoPreviewLayer(session: session)
@@ -73,6 +75,43 @@ class ViewController: NSViewController {
             }
         }
         
+    }
+}
+
+extension ViewController
+{
+    func captureOutput(_ output: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        guard let cgimagebuff:CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
+        else
+        {
+            return
+        }
+        do{
+            print(sampleBuffer)
+            let model:VNCoreMLModel = try VNCoreMLModel(for:YOLOv3TinyFP16().model )
+            let request=VNCoreMLRequest(model: model) { (vnrequest, error) in
+                if error != nil
+                {
+                    print(error)
+                }
+                else{
+                    print(vnrequest)
+                }
+
+            }
+            do
+            {
+                try VNImageRequestHandler(cvPixelBuffer: cgimagebuff, options: [:]).perform([request])
+            }
+            catch
+            {
+                print(error)
+            }
+        }
+        catch
+        {
+            
+        }
     }
 }
 
