@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="17156"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -707,14 +708,17 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="MusicSuggestor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="291"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tUU-sN-7Jp">
-                                <rect key="frame" x="213" y="49" width="69" height="21"/>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tUU-sN-7Jp">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="291"/>
                                 <subviews>
+                                    <avPlayerView controlsStyle="inline" translatesAutoresizingMaskIntoConstraints="NO" id="3ok-LJ-iIJ">
+                                        <rect key="frame" x="0.0" y="21" width="480" height="270"/>
+                                    </avPlayerView>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sDF-Xv-tdP">
-                                        <rect key="frame" x="-6" y="-7" width="81" height="32"/>
+                                        <rect key="frame" x="200" y="-7" width="81" height="32"/>
                                         <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3Ct-Ar-nIR">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -726,17 +730,28 @@
                                 </subviews>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="tUU-sN-7Jp" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="11o-3x-1DN"/>
+                            <constraint firstAttribute="bottom" secondItem="tUU-sN-7Jp" secondAttribute="bottom" id="1X5-jw-Cck"/>
+                            <constraint firstAttribute="trailing" secondItem="tUU-sN-7Jp" secondAttribute="trailing" id="60K-vK-JLN"/>
+                            <constraint firstItem="tUU-sN-7Jp" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Yej-aZ-fTy"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="player" destination="3ok-LJ-iIJ" id="B5h-mv-DcK"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="654.5"/>
         </scene>
     </scenes>
 </document>

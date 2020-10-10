@@ -7,23 +7,34 @@
 
 import Cocoa
 import AVFoundation
+import AVKit
 
 
 class ViewController: NSViewController {
-
+    
+    
+    @IBOutlet weak var player: AVPlayerView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("loading avkit")
+        setupAVkit()
+        print("avkit loaded")
     }
-
+    
     override var representedObject: Any? {
         didSet {
-        // Update the view, if already loaded.
+            // Update the view, if already loaded.
         }
     }
-
+    
     @IBAction func AccessWebCam(_ sender: Any)
     {
-        let request=AVCaptureDevice.requestAccess(for: AVMediaType.video) { (result) in
+       
+        
+    }
+    func setupAVkit()
+    {
+            AVCaptureDevice.requestAccess(for: AVMediaType.video) { (result) in
             print(result)
             switch AVCaptureDevice.authorizationStatus(for: .video)
             {
@@ -42,10 +53,10 @@ class ViewController: NSViewController {
                 var camerainput:AVCaptureInput?
                 do
                 {
-                     camerainput=try AVCaptureDeviceInput(device: device!)
+                    camerainput=try AVCaptureDeviceInput(device: device!)
                 }
                 catch{
-                        print("error")
+                    print("error")
                 }
                 let cameracaptureop=AVCapturePhotoOutput()
                 session.addInput(camerainput!)
@@ -55,12 +66,13 @@ class ViewController: NSViewController {
                     layer.videoGravity=AVLayerVideoGravity.resizeAspectFill
                     layer.frame=self.view.bounds
                     layer.connection?.videoOrientation=AVCaptureVideoOrientation.portrait
-                    self.view.layer?.addSublayer(layer)
+                    self.player.layer?.addSublayer(layer)
+                    
                 }
                 session.startRunning()
+            }
         }
+        
     }
-    
-}
 }
 
